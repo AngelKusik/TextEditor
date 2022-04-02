@@ -1,5 +1,5 @@
 ﻿// Author: Angelica Kusik
-// Date: March 31, 2022
+// Date: April 1, 2022
 // Description: 
 // A simple text editor application created as Lab 5 requirement for the NETD course that provides the user with some
 //basic text edition features such as save, save as, copy, paste, cut, and more.
@@ -60,6 +60,13 @@ namespace TextEditor_Lab5
                 openFile = saveDialog.FileName;
                 //Call the SaveFile function to write the contents of the textbox into the file.
                 SaveFile(openFile);
+
+                //Display a message informing the user that file was successfully saved.
+                MessageBox.Show("Your work is saved to " + openFile, "Save Successful");
+            }else
+            {
+                //If user clicks cancel instead of ok on the dialog, display a warning informaming file was not saved.
+                MessageBox.Show("Your work was not saved", "Warning");
             }
         }
         /// <summary>
@@ -67,32 +74,57 @@ namespace TextEditor_Lab5
         /// </summary>
         private void ExitClick(object sender, EventArgs e)
         {
+            //Call the function ConfirmClose() to check if user wants to save
+            //changes to the file before closing the application
+            ConfirmClose(sender, e);
+
+            //Closes the file
             Close();
         }
         /// <summary>
         /// Creates a new document by reseating the textbox to default values.
         /// </summary>
-
         private void NewClick(object sender, EventArgs e)
         {
+            //Call the function ConfirmClose() to check if user wants to save file before proceding.
+            ConfirmClose(sender, e);
+
             //clear the textbox and reseat the file path variable to create a new document.
             textBoxBody.Text = String.Empty;
-            openFile = String.Empty;            
-        }
+            openFile = String.Empty;
 
+        }
+        /// <summary>
+        /// Opens the openFileDialog so user can select an existing file and displays the content of the selected file on the textbox.
+        /// </summary>
         private void OpenClick(object sender, EventArgs e)
         {
             openFile = String.Empty;
+            //Call ConfirmClose() to check if user wants to save the file before proceding.
+            ConfirmClose(sender, e);
 
-           // OpenFileDialog openDialog = new OpenFileDialog();
-            //FileStream fileToAcess = new FileStream(openFile, FileMode.Open, FileAccess.Read);
-           // StreamReader read = new StreamReader(fileToAcess);
+            OpenFileDialog openDialog = new OpenFileDialog();
+            openDialog.Filter = "Text Files (*.alf)|*.alf";
 
-            //Read the current file in the textbox into the file.
-            //read.ReadToEnd(fileToAcess.Text.ToString());
+            //If user selects a file to open
+            if (openDialog.ShowDialog() == DialogResult.OK)
+            {
+                //Declare a FileStream object to write to th
+                FileStream fileToAcess = new FileStream(openDialog.FileName, FileMode.Open, FileAccess.Read);
+                StreamReader read = new StreamReader(fileToAcess);
 
-            //Close the write 
-            //read.Close();
+                //Set file path equal to the path of the file that the user is openening. This is a global variable that can be used by the save button 
+                openFile = openDialog.FileName;
+
+                //Read all the content of the file being opened and store it in a variable
+                string openFileContent = read.ReadToEnd();
+
+                //Close the reader 
+                read.Close();
+
+                //Display the content of the file that was opened on the textbox.
+                textBoxBody.Text = openFileContent;
+            }            
         }
         /// <summary>
         /// Cuts a selected section of text from the textbox and pastes it to the clipboard.
@@ -214,6 +246,16 @@ namespace TextEditor_Lab5
         {
             //Now paste the text from the clipboard where the user selected.
             textbox.Text = textbox.Text.Insert(textbox.SelectionStart, Clipboard.GetText());
+
+        }
+
+        private void ConfirmClose(object sender, EventArgs e)
+        {
+            //Display a message asking the user if he wants to save the file before proceding.
+            if (MessageBox.Show("Do you want to save changes to Alf?", "Warning", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                SaveClick(sender, e);
+            }
 
         }
         #endregion

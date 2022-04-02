@@ -41,19 +41,15 @@ namespace TextEditor_Lab5
             this.menuFileSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.menuFileExit = new System.Windows.Forms.ToolStripMenuItem();
             this.menuEdit = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuEditUndo = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuEditRedo = new System.Windows.Forms.ToolStripMenuItem();
             this.menuEditSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.menuEditCut = new System.Windows.Forms.ToolStripMenuItem();
             this.menuEditCopy = new System.Windows.Forms.ToolStripMenuItem();
             this.menuEditPaste = new System.Windows.Forms.ToolStripMenuItem();
             this.menuEditSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.menuEditSelectAll = new System.Windows.Forms.ToolStripMenuItem();
             this.menuHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.menuHelpAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.textBoxBody = new System.Windows.Forms.TextBox();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.cutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuTop.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -83,6 +79,7 @@ namespace TextEditor_Lab5
             this.menuFile.Name = "menuFile";
             this.menuFile.Size = new System.Drawing.Size(62, 34);
             this.menuFile.Text = "&File";
+            this.menuFile.ToolTipText = "Click to access file saving options.\r\n";
             // 
             // menuFileNew
             // 
@@ -92,6 +89,7 @@ namespace TextEditor_Lab5
             this.menuFileNew.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
             this.menuFileNew.Size = new System.Drawing.Size(315, 40);
             this.menuFileNew.Text = "&New";
+            this.menuFileNew.ToolTipText = "Click to create a new file.";
             this.menuFileNew.Click += new System.EventHandler(this.NewClick);
             // 
             // menuFileOpen
@@ -102,6 +100,7 @@ namespace TextEditor_Lab5
             this.menuFileOpen.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
             this.menuFileOpen.Size = new System.Drawing.Size(315, 40);
             this.menuFileOpen.Text = "&Open";
+            this.menuFileOpen.ToolTipText = "Click to open a file.";
             this.menuFileOpen.Click += new System.EventHandler(this.OpenClick);
             // 
             // menuFileSeparator1
@@ -117,6 +116,7 @@ namespace TextEditor_Lab5
             this.menuFileSave.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
             this.menuFileSave.Size = new System.Drawing.Size(315, 40);
             this.menuFileSave.Text = "&Save";
+            this.menuFileSave.ToolTipText = "Click to save file.";
             this.menuFileSave.Click += new System.EventHandler(this.SaveClick);
             // 
             // menuFileSaveAs
@@ -125,6 +125,7 @@ namespace TextEditor_Lab5
             this.menuFileSaveAs.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
             this.menuFileSaveAs.Size = new System.Drawing.Size(315, 40);
             this.menuFileSaveAs.Text = "Save &As";
+            this.menuFileSaveAs.ToolTipText = "Click to select where the file must be saved.\r\n";
             this.menuFileSaveAs.Click += new System.EventHandler(this.SaveAsClick);
             // 
             // menuFileSeparator2
@@ -138,42 +139,26 @@ namespace TextEditor_Lab5
             this.menuFileExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
             this.menuFileExit.Size = new System.Drawing.Size(315, 40);
             this.menuFileExit.Text = "E&xit";
+            this.menuFileExit.ToolTipText = "Click to exit Alf Text Editor";
             this.menuFileExit.Click += new System.EventHandler(this.ExitClick);
             // 
             // menuEdit
             // 
             this.menuEdit.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuEditUndo,
-            this.menuEditRedo,
             this.menuEditSeparator1,
             this.menuEditCut,
             this.menuEditCopy,
             this.menuEditPaste,
-            this.menuEditSeparator2,
-            this.menuEditSelectAll,
-            this.cutToolStripMenuItem});
+            this.menuEditSeparator2});
             this.menuEdit.Name = "menuEdit";
             this.menuEdit.Size = new System.Drawing.Size(66, 34);
             this.menuEdit.Text = "&Edit";
-            // 
-            // menuEditUndo
-            // 
-            this.menuEditUndo.Name = "menuEditUndo";
-            this.menuEditUndo.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
-            this.menuEditUndo.Size = new System.Drawing.Size(252, 40);
-            this.menuEditUndo.Text = "&Undo";
-            // 
-            // menuEditRedo
-            // 
-            this.menuEditRedo.Name = "menuEditRedo";
-            this.menuEditRedo.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Y)));
-            this.menuEditRedo.Size = new System.Drawing.Size(252, 40);
-            this.menuEditRedo.Text = "&Redo";
+            this.menuEdit.ToolTipText = "Click to access file edition options.";
             // 
             // menuEditSeparator1
             // 
             this.menuEditSeparator1.Name = "menuEditSeparator1";
-            this.menuEditSeparator1.Size = new System.Drawing.Size(249, 6);
+            this.menuEditSeparator1.Size = new System.Drawing.Size(312, 6);
             // 
             // menuEditCut
             // 
@@ -183,6 +168,7 @@ namespace TextEditor_Lab5
             this.menuEditCut.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.U)));
             this.menuEditCut.Size = new System.Drawing.Size(315, 40);
             this.menuEditCut.Text = "Cu&t";
+            this.menuEditCut.ToolTipText = "Click to cut selected text from the text editor.";
             this.menuEditCut.Click += new System.EventHandler(this.CutClick);
             // 
             // menuEditCopy
@@ -193,6 +179,7 @@ namespace TextEditor_Lab5
             this.menuEditCopy.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
             this.menuEditCopy.Size = new System.Drawing.Size(315, 40);
             this.menuEditCopy.Text = "&Copy";
+            this.menuEditCopy.ToolTipText = "Click to copy selected text from the text editor.";
             this.menuEditCopy.Click += new System.EventHandler(this.CopyClick);
             // 
             // menuEditPaste
@@ -203,18 +190,13 @@ namespace TextEditor_Lab5
             this.menuEditPaste.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
             this.menuEditPaste.Size = new System.Drawing.Size(315, 40);
             this.menuEditPaste.Text = "&Paste";
+            this.menuEditPaste.ToolTipText = "Click to paste text from the clipboard to the text editor.";
             this.menuEditPaste.Click += new System.EventHandler(this.PasteClick);
             // 
             // menuEditSeparator2
             // 
             this.menuEditSeparator2.Name = "menuEditSeparator2";
-            this.menuEditSeparator2.Size = new System.Drawing.Size(249, 6);
-            // 
-            // menuEditSelectAll
-            // 
-            this.menuEditSelectAll.Name = "menuEditSelectAll";
-            this.menuEditSelectAll.Size = new System.Drawing.Size(252, 40);
-            this.menuEditSelectAll.Text = "Select &All";
+            this.menuEditSeparator2.Size = new System.Drawing.Size(312, 6);
             // 
             // menuHelp
             // 
@@ -223,6 +205,7 @@ namespace TextEditor_Lab5
             this.menuHelp.Name = "menuHelp";
             this.menuHelp.Size = new System.Drawing.Size(74, 34);
             this.menuHelp.Text = "&Help";
+            this.menuHelp.ToolTipText = "Click to access help options.";
             // 
             // menuHelpAbout
             // 
@@ -230,6 +213,7 @@ namespace TextEditor_Lab5
             this.menuHelpAbout.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.B)));
             this.menuHelpAbout.Size = new System.Drawing.Size(315, 40);
             this.menuHelpAbout.Text = "&About...";
+            this.menuHelpAbout.ToolTipText = "Click to access information about Alf Text Editor.";
             this.menuHelpAbout.Click += new System.EventHandler(this.AboutClick);
             // 
             // textBoxBody
@@ -242,12 +226,6 @@ namespace TextEditor_Lab5
             this.textBoxBody.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.textBoxBody.Size = new System.Drawing.Size(965, 469);
             this.textBoxBody.TabIndex = 1;
-            // 
-            // cutToolStripMenuItem
-            // 
-            this.cutToolStripMenuItem.Name = "cutToolStripMenuItem";
-            this.cutToolStripMenuItem.Size = new System.Drawing.Size(315, 40);
-            this.cutToolStripMenuItem.Text = "Cu&t";
             // 
             // formTextEditor
             // 
@@ -281,17 +259,13 @@ namespace TextEditor_Lab5
         private System.Windows.Forms.ToolStripSeparator menuFileSeparator2;
         private System.Windows.Forms.ToolStripMenuItem menuFileExit;
         private System.Windows.Forms.ToolStripMenuItem menuEdit;
-        private System.Windows.Forms.ToolStripMenuItem menuEditUndo;
-        private System.Windows.Forms.ToolStripMenuItem menuEditRedo;
         private System.Windows.Forms.ToolStripSeparator menuEditSeparator1;
         private System.Windows.Forms.ToolStripMenuItem menuEditCut;
         private System.Windows.Forms.ToolStripMenuItem menuEditCopy;
         private System.Windows.Forms.ToolStripMenuItem menuEditPaste;
         private System.Windows.Forms.ToolStripSeparator menuEditSeparator2;
-        private System.Windows.Forms.ToolStripMenuItem menuEditSelectAll;
         private System.Windows.Forms.ToolStripMenuItem menuHelp;
         private System.Windows.Forms.ToolStripMenuItem menuHelpAbout;
-        private System.Windows.Forms.ToolStripMenuItem cutToolStripMenuItem;
     }
 }
 
