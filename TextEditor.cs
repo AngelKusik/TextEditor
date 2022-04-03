@@ -1,8 +1,9 @@
 ﻿// Author: Angelica Kusik
-// Date: April 1, 2022
+// Date: April 2, 2022
 // Description: 
 // A simple text editor application created as Lab 5 requirement for the NETD course that provides the user with some
 //basic text edition features such as save, save as, copy, paste, cut, and more.
+//In other words: Its a simplified Notepad application named after the beloved TV character Alf.
 
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,7 @@ namespace TextEditor_Lab5
         //Declare a "global" variable to hold the file path and set it
         //equal to an empty string until the user selects where the file must be saved.
         string openFile = String.Empty;
+
         public formTextEditor()
         {
             InitializeComponent();
@@ -99,7 +101,6 @@ namespace TextEditor_Lab5
         /// </summary>
         private void OpenClick(object sender, EventArgs e)
         {
-            openFile = String.Empty;
             //Call ConfirmClose() to check if user wants to save the file before proceding.
             ConfirmClose(sender, e);
 
@@ -203,9 +204,12 @@ namespace TextEditor_Lab5
             "By Angelica Kusik in partnership with Professor Kyle Chapman" + Environment.NewLine + 
             "\u00a9 2022 Angelica Kusik CO. All rights reserved.");
         }
-
         #endregion
         #region "Functions"
+        /// <summary>
+        /// Creates a new file and writes the contents of the textbox on it.
+        /// </summary>
+        /// <param name="fileName">File Name/Path </param>
         private void SaveFile(string fileName)
         {
             //Create a System.IO object to make file access easier
@@ -248,15 +252,24 @@ namespace TextEditor_Lab5
             textbox.Text = textbox.Text.Insert(textbox.SelectionStart, Clipboard.GetText());
 
         }
-
+        /// <summary>
+        /// Bonus Feature: Displays a message asking the user if they want to save their work
+        /// before creating a new file, opening a new file or exiting the application.
+        /// </summary>
         private void ConfirmClose(object sender, EventArgs e)
         {
-            //Display a message asking the user if he wants to save the file before proceding.
-            if (MessageBox.Show("Do you want to save changes to Alf?", "Warning", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            //If texBoxBody has some text in it or if its a saved file ...
+            if(!(textBoxBody.Text == String.Empty && openFile == String.Empty))
             {
-                SaveClick(sender, e);
+                //ask user if they would like to save their work before opening another file, creating a new file or exiting the application.
+                {
+                    //If user clicks yes, call the SaveClick event handler.
+                    if (MessageBox.Show("Do you want to save changes to Alf?", "Warning", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        SaveClick(sender, e);
+                    }
+                 }
             }
-
         }
         #endregion
     }
